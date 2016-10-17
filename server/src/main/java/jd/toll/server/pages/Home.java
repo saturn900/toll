@@ -9,7 +9,7 @@ import org.apache.wicket.markup.html.basic.Label;
 public class Home extends WebPage {
 
     public Home() {
-        add(new Label("label", "Thi is label!!!!"));
+        add(new Label("label", "This is label!!!!"));
     }
 
 }
