@@ -1,0 +1,113 @@
+subprojects {
+    apply plugin: 'java'
+    compileJava.options.encoding = 'UTF-8'
+    compileTestJava.options.encoding = 'UTF-8'
+    sourceCompatibility = 1.7
+
+    repositories {
+        mavenCentral()
+        mavenLocal()
+        maven {
+            url 'http://repo.springsource.org/libs-milestone'
+        }
+    }
+
+    ext {
+        springVersion = "3.2.3.RELEASE";
+        springDataJpaVersion = "1.4.0.RELEASE"
+        hibernateVersion = "4.2.2.Final"
+        hibernateJpaVersion = "1.0.0.Final"
+        jettyVersion = "8.1.14.v20131031"
+        jacksonVersion = '2.3.0'
+        validationVersion = '1.1.0.Final'
+        commonsLang3Version = '3.1'
+        commonsCollectionsVersion = '3.2.1'
+        junitVersion = '4.11'
+        slf4jVersion = '1.7.5'
+        logbackVersion = '1.0.13'
+    }
+
+    test {
+        useJUnit()
+    }
+
+    sourceSets {
+        main {
+            java {
+                  srcDir 'src/main/java'
+            }
+            resources {
+                srcDir 'src/main/resources'
+                srcDir 'src/main/java'
+            }
+        }
+    }
+}
+
+project(':common') {
+    dependencies {
+        
+    }
+}
+
+project(':server') {
+    apply plugin: 'war'
+    apply plugin: 'jetty'
+
+    dependencies {
+        
+        compile project(':common')
+        
+    }
+
+    task explodedWar(type: Copy, dependsOn: 'war') {
+        into new File("$buildDir", 'exploded-war')
+        with war
+    }
+
+    task(start, dependsOn: 'explodedWar', type: JavaExec) {
+        main = 'Start'
+        systemProperty 'server.port', '8080'
+        classpath = sourceSets.test.runtimeClasspath
+    }
+
+    task(startDebug, dependsOn: 'explodedWar', type: JavaExec) {
+        main = 'Start'
+        classpath = sourceSets.test.runtimeClasspath
+        systemProperty 'server.port', '8080'
+        jvmArgs = ["-Xdebug", "-Xrunjdwp:transport=dt_socket,server=y,suspend=y,address=8000"]
+    }
+
+    jettyRunWar.contextPath = ''
+}
+
+
+apply plugin: 'gradle-one-jar'
+buildscript {
+    repositories {
+        mavenCentral()
+    }
+    dependencies {
+        classpath 'com.github.rholder:gradle-one-jar:1.0.3'
+    }
+}
+
+project(':tracker') {
+    apply plugin: 'java'
+    apply plugin: 'idea'
+
+    dependencies {
+
+        compile project(':common')
+
+    }
+
+    task daemonJar(type: OneJar) {
+        mainClass = 'ru.metacon.monitor.Application'
+    }
+
+    artifacts {
+        archives daemonJar
+    }
+}
+
