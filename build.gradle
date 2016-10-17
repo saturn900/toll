@@ -57,7 +57,10 @@ project(':server') {
     dependencies {
         
         compile project(':common')
-        
+        // https://mvnrepository.com/artifact/org.apache.wicket/wicket-core
+        compile group: 'org.apache.wicket', name: 'wicket-core', version: '6.20.0'
+
+
     }
 
     task explodedWar(type: Copy, dependsOn: 'war') {
