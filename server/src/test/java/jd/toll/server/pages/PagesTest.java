@@ -32,4 +32,10 @@ public class PagesTest {
         tester.assertRenderedPage(Home.class);
     }
 
+    @Test
+    public void homeExtenderTest() throws Exception {
+        tester.startPage(HomeExtender.class);
+        tester.assertRenderedPage(HomeExtender.class);
+    }
+
 }
