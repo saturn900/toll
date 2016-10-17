@@ -60,6 +60,8 @@ project(':server') {
         // https://mvnrepository.com/artifact/org.apache.wicket/wicket-core
         compile group: 'org.apache.wicket', name: 'wicket-core', version: '6.20.0'
 
+        providedCompile "org.eclipse.jetty:jetty-server:$jettyVersion"
+        providedCompile "org.eclipse.jetty:jetty-webapp:$jettyVersion"
 
     }
 
