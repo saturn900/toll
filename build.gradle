@@ -63,6 +63,8 @@ project(':server') {
         providedCompile "org.eclipse.jetty:jetty-server:$jettyVersion"
         providedCompile "org.eclipse.jetty:jetty-webapp:$jettyVersion"
 
+        testCompile 'junit:junit:4.11'
+
     }
 
     task explodedWar(type: Copy, dependsOn: 'war') {
