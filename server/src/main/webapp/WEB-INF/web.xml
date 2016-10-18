@@ -11,18 +11,18 @@
     <filter>
         <filter-name>WicketFilter</filter-name>
         <filter-class>org.apache.wicket.protocol.http.WicketFilter</filter-class>
-        <init-param>
+        <!--<init-param>
             <param-name>applicationClassName</param-name>
             <param-value>jd.toll.server.WicketApplication</param-value>
-        </init-param>
-        <!--<init-param>
+        </init-param>-->
+        <init-param>
             <param-name>applicationFactoryClassName</param-name>
             <param-value>org.apache.wicket.spring.SpringWebApplicationFactory</param-value>
-        </init-param>-->
-        <!--<init-param>
+        </init-param>
+        <init-param>
             <param-name>applicationBean</param-name>
             <param-value>wicketApplication</param-value>
-        </init-param>-->
+        </init-param>
     </filter>
 
    <!-- <filter>
@@ -41,21 +41,23 @@
         <url-pattern>/*</url-pattern>
     </filter-mapping>
 
-    <!--<listener>
+    <listener>
         <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
     </listener>
 
     <context-param>
         <param-name>contextClass</param-name>
         <param-value>
-            org.springframework.web.context.support.AnnotationConfigWebApplicationContext
+            <!--org.springframework.web.context.support.AnnotationConfigWebApplicationContext-->
+            org.springframework.web.context.support.XmlWebApplicationContext
         </param-value>
+
     </context-param>
 
     <context-param>
         <param-name>contextConfigLocation</param-name>
         <param-value>classpath*:/applicationContext.xml</param-value>
-        &lt;!&ndash;<param-value>jd.toll.ServerContext</param-value>&ndash;&gt;
-    </context-param>-->
+        <!--<param-value>jd.toll.ServerContext</param-value>-->
+    </context-param>
 
 </web-app>
