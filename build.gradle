@@ -61,13 +61,15 @@ project(':server') {
         compile group: 'org.apache.wicket', name: 'wicket-core', version: '6.20.0'
         compile 'org.apache.wicket:wicket-spring:6.13.0'
         // https://mvnrepository.com/artifact/org.springframework/spring-web
-        compile group: 'org.springframework', name: 'spring-web', version: '3.2.3.RELEASE'
+        compile group: 'org.springframework', name: 'spring-web', version: "$springVersion"
 
 
         providedCompile "org.eclipse.jetty:jetty-server:$jettyVersion"
         providedCompile "org.eclipse.jetty:jetty-webapp:$jettyVersion"
 
+
         testCompile 'junit:junit:4.11'
+        testCompile "org.springframework:spring-test:$springVersion"
 
     }
 
