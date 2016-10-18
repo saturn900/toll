@@ -48,16 +48,15 @@
     <context-param>
         <param-name>contextClass</param-name>
         <param-value>
-            <!--org.springframework.web.context.support.AnnotationConfigWebApplicationContext-->
-            org.springframework.web.context.support.XmlWebApplicationContext
+            org.springframework.web.context.support.AnnotationConfigWebApplicationContext
+            <!--org.springframework.web.context.support.XmlWebApplicationContext-->
         </param-value>
-
     </context-param>
 
     <context-param>
         <param-name>contextConfigLocation</param-name>
-        <param-value>classpath*:/applicationContext.xml</param-value>
-        <!--<param-value>jd.toll.ServerContext</param-value>-->
+        <!--<param-value>classpath*:/applicationContext.xml</param-value>-->
+        <param-value>jd.toll.server.config.ServerContext</param-value>
     </context-param>
 
 </web-app>
