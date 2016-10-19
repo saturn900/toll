@@ -59,9 +59,13 @@ project(':server') {
         compile project(':common')
         // https://mvnrepository.com/artifact/org.apache.wicket/wicket-core
         compile group: 'org.apache.wicket', name: 'wicket-core', version: '6.20.0'
-        compile 'org.apache.wicket:wicket-spring:6.13.0'
+        compile 'org.apache.wicket:wicket-auth-roles:6.20.0'
+        compile 'org.apache.wicket:wicket-spring:6.20.0'
         // https://mvnrepository.com/artifact/org.springframework/spring-web
         compile group: 'org.springframework', name: 'spring-web', version: "$springVersion"
+        compile "org.springframework.security:spring-security-web:$springVersion"
+        compile "org.springframework.security:spring-security-config:$springVersion"
+        compile 'org.slf4j:slf4j-api:1.7.2'
 
 
         providedCompile "org.eclipse.jetty:jetty-server:$jettyVersion"
@@ -70,6 +74,8 @@ project(':server') {
 
         testCompile 'junit:junit:4.11'
         testCompile "org.springframework:spring-test:$springVersion"
+
+        runtime group: 'ch.qos.logback', name: 'logback-classic', version: '1.1.7'
 
     }
 
