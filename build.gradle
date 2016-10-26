@@ -72,6 +72,7 @@ project(':server') {
         compile "org.hibernate.javax.persistence:hibernate-jpa-2.0-api:$hibernateJpaVersion"
         compile "org.hibernate:hibernate-entitymanager:$hibernateVersion"
         compile 'com.h2database:h2:1.4.185'
+        compile 'org.liquibase:liquibase-core:3.0.7'
 
         providedCompile "org.eclipse.jetty:jetty-server:$jettyVersion"
         providedCompile "org.eclipse.jetty:jetty-webapp:$jettyVersion"

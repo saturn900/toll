@@ -20,7 +20,7 @@ import org.springframework.test.context.support.AnnotationConfigContextLoader;
 public class DaoTest {
 
     @Test
-    public void homePageTest() throws Exception {
+    public void daoTest() throws Exception {
 
     }
 
