@@ -67,6 +67,11 @@ project(':server') {
         compile "org.springframework.security:spring-security-config:$springVersion"
         compile 'org.slf4j:slf4j-api:1.7.2'
 
+        compile "org.springframework:spring-orm:$springVersion"
+        compile "org.springframework.data:spring-data-jpa:$springDataJpaVersion"
+        compile "org.hibernate.javax.persistence:hibernate-jpa-2.0-api:$hibernateJpaVersion"
+        compile "org.hibernate:hibernate-entitymanager:$hibernateVersion"
+        compile 'com.h2database:h2:1.4.185'
 
         providedCompile "org.eclipse.jetty:jetty-server:$jettyVersion"
         providedCompile "org.eclipse.jetty:jetty-webapp:$jettyVersion"
