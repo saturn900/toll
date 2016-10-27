@@ -45,7 +45,7 @@ public class XBeeNode {
     @Column(name = "is_tracked")
     public boolean isTracked = true;
 
-    private static final Logger log = LoggerFactory.getLogger(ru.metacon.domain.XBeeNode.class);
+    private static final Logger log = LoggerFactory.getLogger(XBeeNode.class);
 
     public XBeeNode() {
     }

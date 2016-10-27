@@ -4,7 +4,7 @@
 
 
     <appender name="ROLLING" class="ch.qos.logback.core.rolling.RollingFileAppender">
-        <file>e:/app-logs/server.log</file>
+        <file>app-logs/server.log</file>
         <rollingPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedRollingPolicy">
             <fileNamePattern>e:/app-logs/server.%d{yyyy-MM-dd}.%i.zip</fileNamePattern>
             <maxFileSize>10MB</maxFileSize>

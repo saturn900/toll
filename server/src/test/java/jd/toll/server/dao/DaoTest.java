@@ -1,10 +1,12 @@
 package jd.toll.server.dao;
 
 import jd.toll.server.config.ServerContext;
+import jd.toll.server.domain.XBeeNode;
 import org.apache.wicket.util.tester.WicketTester;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
@@ -19,9 +21,14 @@ import org.springframework.test.context.support.AnnotationConfigContextLoader;
 @ActiveProfiles("test")
 public class DaoTest {
 
+    @Autowired
+    XBeeNodeRepository xBeeNodeRepository;
+
     @Test
     public void daoTest() throws Exception {
+        Iterable<XBeeNode> list = xBeeNodeRepository.findAll();
 
+        System.out.println(list);
     }
 
 }

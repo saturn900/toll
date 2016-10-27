@@ -46,6 +46,10 @@ subprojects {
 
 project(':common') {
     dependencies {
+
+        compile "org.apache.commons:commons-lang3:$commonsLang3Version"
+        compile 'org.slf4j:slf4j-api:1.7.2'
+        compile "org.hibernate.javax.persistence:hibernate-jpa-2.0-api:$hibernateJpaVersion"
         
     }
 }
