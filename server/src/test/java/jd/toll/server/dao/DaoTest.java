@@ -23,12 +23,16 @@ public class DaoTest {
 
     @Autowired
     XBeeNodeRepository xBeeNodeRepository;
+    private String zigBeeId;
 
     @Test
     public void daoTest() throws Exception {
         Iterable<XBeeNode> list = xBeeNodeRepository.findAll();
 
-        System.out.println(list);
+        for (XBeeNode xBeeNode : list) {
+            zigBeeId = xBeeNode.getZigBeeId();
+            System.out.println(zigBeeId);
+        }
     }
 
 }

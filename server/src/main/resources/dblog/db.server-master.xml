@@ -6,6 +6,8 @@
                       http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-1.9.xsd">
 
     <include file="/dblog/db.server-creation.xml"/>
+    <include file="/dblog/db.monitor-new-nodes.xml"/>
+    <include file="/dblog/db.server-owner.xml"/>
 
 
 </databaseChangeLog>

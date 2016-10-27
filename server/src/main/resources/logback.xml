@@ -32,7 +32,7 @@
         <appender-ref ref="STDOUT"/>
     </logger>
 
-    <logger name="org" level="DEBUG" additivity="false">
+    <logger name="org" level="WARN" additivity="false">
         <appender-ref ref="ROLLING"/>
         <appender-ref ref="STDOUT"/>
     </logger>
