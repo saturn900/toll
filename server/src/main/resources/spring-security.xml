@@ -13,6 +13,8 @@ http://www.springframework.org/schema/security/spring-security-3.2.xsd">
         <intercept-url pattern="/home/**" access="isAuthenticated()" />
         <intercept-url pattern="/any/**" access="permitAll" />
         <intercept-url pattern="/sort/**" access="permitAll" />
+        <intercept-url pattern="/nodes/**" access="permitAll" />
+        <intercept-url pattern="/view/**" access="permitAll" />
         <intercept-url pattern="/**/*.png" access="permitAll" />
         <intercept-url pattern="/**/*.svg" access="permitAll" />
         <intercept-url pattern="/**/*.css" access="permitAll" />

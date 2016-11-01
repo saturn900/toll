@@ -7,6 +7,8 @@ import jd.toll.server.pages.LoginPage;
 import jd.toll.server.pages.SecureWebSession;
 import jd.toll.server.pages.examples.ContactsDatabase;
 import jd.toll.server.pages.examples.SortingPage;
+import jd.toll.server.pages.nodes.AllNodesPage;
+import jd.toll.server.pages.nodes.ViewNode;
 import jd.toll.server.services.NodeService;
 import org.apache.wicket.Page;
 import org.apache.wicket.authroles.authentication.AbstractAuthenticatedWebSession;
@@ -49,6 +51,8 @@ public class WicketApplication extends AuthenticatedWebApplication implements Ap
         mountPage("/login", LoginPage.class);
         mountPage("/home", Home.class);
         mountPage("/sort", SortingPage.class);
+        mountPage("/nodes", AllNodesPage.class);
+        mountPage("/view", ViewNode.class);
         if (xBeeNodeRepository == null) throw new IllegalStateException("node repo is not initialized");
     }
 
