@@ -40,7 +40,7 @@ public class WicketApplication extends AuthenticatedWebApplication implements Ap
 
     @Override
     public Class<? extends Page> getHomePage() {
-        return LoginPage.class;
+        return Home.class;
     }
 
     @Override

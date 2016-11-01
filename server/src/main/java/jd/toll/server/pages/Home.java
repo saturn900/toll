@@ -4,6 +4,7 @@ import jd.toll.server.WicketApplication;
 import org.apache.wicket.Application;
 import org.apache.wicket.markup.html.WebPage;
 import org.apache.wicket.markup.html.basic.Label;
+import org.apache.wicket.markup.html.link.Link;
 
 import java.util.List;
 
