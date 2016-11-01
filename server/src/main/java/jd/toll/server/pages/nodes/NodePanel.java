@@ -21,6 +21,8 @@ import jd.toll.server.domain.XBeeNode;
 import jd.toll.server.services.NodeService;
 import org.apache.wicket.Application;
 import org.apache.wicket.AttributeModifier;
+import org.apache.wicket.ajax.AjaxRequestTarget;
+import org.apache.wicket.ajax.markup.html.AjaxLink;
 import org.apache.wicket.markup.html.basic.Label;
 import org.apache.wicket.markup.html.link.BookmarkablePageLink;
 import org.apache.wicket.markup.html.panel.Panel;
@@ -65,7 +67,7 @@ public class NodePanel extends Panel
                 link.add(new Label("text", store.getZigBeeId()));
                 item.add(link);
 
-                /*item.add(new AjaxLink<Void>("delete") {
+                item.add(new AjaxLink<Void>("delete") {
                     @Override
                     public void onClick(AjaxRequestTarget target) {
                         System.err.println(getParent());
@@ -80,7 +82,7 @@ public class NodePanel extends Panel
                             add("del",name);
                         }});
                     }
-                });*/
+                });
 
                 item.add(new Label("address", store.getNodeName()));
                 item.add(new Label("coords", store.getLat() + " " + store.getLon()));

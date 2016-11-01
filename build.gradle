@@ -142,3 +142,23 @@ project(':tracker') {
     }
 }
 
+project(':billing') {
+    apply plugin: 'java'
+    apply plugin: 'idea'
+
+    dependencies {
+
+        compile 'com.h2database:h2:1.4.185'
+        compile project(':common')
+
+    }
+
+    task daemonJar(type: OneJar) {
+        mainClass = 'ru.metacon.monitor.Application'
+    }
+
+    artifacts {
+        archives daemonJar
+    }
+}
+
