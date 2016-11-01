@@ -65,6 +65,7 @@ project(':server') {
         compile group: 'org.apache.wicket', name: 'wicket-core', version: '6.20.0'
         compile 'org.apache.wicket:wicket-auth-roles:6.20.0'
         compile 'org.apache.wicket:wicket-spring:6.20.0'
+        compile 'org.apache.wicket:wicket-extensions:6.20.0'
         // https://mvnrepository.com/artifact/org.springframework/spring-web
         compile group: 'org.springframework', name: 'spring-web', version: "$springVersion"
         compile "org.springframework.security:spring-security-web:$springVersion"
@@ -77,6 +78,7 @@ project(':server') {
         compile "org.hibernate:hibernate-entitymanager:$hibernateVersion"
         compile 'com.h2database:h2:1.4.185'
         compile 'org.liquibase:liquibase-core:3.0.7'
+        compile 'com.google.guava:guava:15.0'
 
         providedCompile "org.eclipse.jetty:jetty-server:$jettyVersion"
         providedCompile "org.eclipse.jetty:jetty-webapp:$jettyVersion"

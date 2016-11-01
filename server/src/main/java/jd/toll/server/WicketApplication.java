@@ -5,6 +5,8 @@ import jd.toll.server.pages.Home;
 import jd.toll.server.pages.HomeExtender;
 import jd.toll.server.pages.LoginPage;
 import jd.toll.server.pages.SecureWebSession;
+import jd.toll.server.pages.examples.ContactsDatabase;
+import jd.toll.server.pages.examples.SortingPage;
 import org.apache.wicket.Page;
 import org.apache.wicket.authroles.authentication.AbstractAuthenticatedWebSession;
 import org.apache.wicket.authroles.authentication.AuthenticatedWebApplication;
@@ -26,6 +28,7 @@ public class WicketApplication extends AuthenticatedWebApplication implements Ap
     @Autowired
     @SpringBean
     XBeeNodeRepository xBeeNodeRepository;
+    private final ContactsDatabase contactsDB = new ContactsDatabase(50);
 
     @Override
     public Class<? extends Page> getHomePage() {
@@ -39,6 +42,7 @@ public class WicketApplication extends AuthenticatedWebApplication implements Ap
         mountPage("/extender", HomeExtender.class);
         mountPage("/login", LoginPage.class);
         mountPage("/home", Home.class);
+        mountPage("/sort", SortingPage.class);
         if (xBeeNodeRepository == null) throw new IllegalStateException("node repo is not initialized");
     }
 
@@ -58,5 +62,9 @@ public class WicketApplication extends AuthenticatedWebApplication implements Ap
 
     public XBeeNodeRepository getNodeRepository() {
         return xBeeNodeRepository;
+    }
+
+    public ContactsDatabase getContactsDB() {
+        return contactsDB;
     }
 }
