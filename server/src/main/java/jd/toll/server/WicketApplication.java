@@ -7,6 +7,7 @@ import jd.toll.server.pages.LoginPage;
 import jd.toll.server.pages.SecureWebSession;
 import jd.toll.server.pages.examples.ContactsDatabase;
 import jd.toll.server.pages.examples.SortingPage;
+import jd.toll.server.services.NodeService;
 import org.apache.wicket.Page;
 import org.apache.wicket.authroles.authentication.AbstractAuthenticatedWebSession;
 import org.apache.wicket.authroles.authentication.AuthenticatedWebApplication;
@@ -28,6 +29,11 @@ public class WicketApplication extends AuthenticatedWebApplication implements Ap
     @Autowired
     @SpringBean
     XBeeNodeRepository xBeeNodeRepository;
+
+    @Autowired
+    @SpringBean
+    NodeService nodeService;
+
     private final ContactsDatabase contactsDB = new ContactsDatabase(50);
 
     @Override
@@ -58,6 +64,10 @@ public class WicketApplication extends AuthenticatedWebApplication implements Ap
     @Override
     protected Class<? extends AbstractAuthenticatedWebSession> getWebSessionClass() {
         return SecureWebSession.class;
+    }
+
+    public NodeService getNodeService() {
+        return nodeService;
     }
 
     public XBeeNodeRepository getNodeRepository() {

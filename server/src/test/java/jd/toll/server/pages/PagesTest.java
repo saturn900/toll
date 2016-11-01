@@ -3,6 +3,7 @@ package jd.toll.server.pages;
 import com.google.common.base.Preconditions;
 import jd.toll.server.config.ServerContext;
 import jd.toll.server.pages.examples.SortingPage;
+import jd.toll.server.pages.nodes.AllNodesPage;
 import org.apache.wicket.protocol.http.WebApplication;
 import org.apache.wicket.util.tester.WicketTester;
 import org.junit.Before;
@@ -58,6 +59,12 @@ public class PagesTest extends AbstractJUnit4SpringContextTests {
     public void sortinPageTest() throws Exception {
         tester.startPage(SortingPage.class);
         tester.assertRenderedPage(SortingPage.class);
+    }
+
+    @Test
+    public void allNodesPageTest() throws Exception {
+        tester.startPage(AllNodesPage.class);
+        tester.assertRenderedPage(AllNodesPage.class);
     }
 
 }
