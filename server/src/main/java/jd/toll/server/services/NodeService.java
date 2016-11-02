@@ -90,7 +90,12 @@ public class NodeService {
     }
 
     public List<XBeeNode> getNodeList() {
-        return (List) xBeeNodeRepository.findAll();
+        List<XBeeNode> all = (List<XBeeNode>) xBeeNodeRepository.findAll();
+        initList(all);
+        for (XBeeNode xBeeNode : all) {
+            log.info("{} {} {}", xBeeNode.getZigBeeId(), xBeeNode.getLat(), xBeeNode.getLon());
+        }
+        return all;
     }
 
     public List<String> getNodeIDList() {
