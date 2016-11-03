@@ -13,6 +13,10 @@ public class JDBCTest {
         try (Connection conn = test.getConnection();) {
             System.out.println("conn=" + conn);
             viewTable(conn, "");
+            System.out.println("==================");
+            modifyPrices(conn, 0.34f);
+            System.out.println("==================");
+            viewTable(conn, "");
         }
 
     }
@@ -29,20 +33,25 @@ public class JDBCTest {
 
         Statement stmt = null;
         String query =
-                "select COF_NAME, SUP_ID, PRICE, " +
+                "select COF_NAME as COFFE1, SUP_ID, PRICE, " +
                         "SALES, TOTAL " +
                         "from " + (StringUtils.isEmpty(dbName) ? "" : dbName + ".") + "COFFEES";
+
+        System.out.println(query);
 
         try {
             stmt = con.createStatement();
             ResultSet rs = stmt.executeQuery(query);
             while (rs.next()) {
-                String coffeeName = rs.getString("COF_NAME");
+                String coffeeName = rs.getString("COFFE1");
+                //int coffeeNameInt = rs.getInt("COF_NAME");
                 int supplierID = rs.getInt("SUP_ID");
+                String supplierIDStr = rs.getString("SUP_ID");
+                System.out.println("supplierIDStr " + supplierIDStr);
                 float price = rs.getFloat("PRICE");
                 int sales = rs.getInt("SALES");
                 int total = rs.getInt("TOTAL");
-                System.out.println(coffeeName + "\t" + supplierID +
+                System.out.println(coffeeName + "\t\t" + supplierID +
                         "\t" + price + "\t" + sales +
                         "\t" + total);
             }
@@ -54,6 +63,33 @@ public class JDBCTest {
             }
         }
     }
+
+    public static void modifyPrices(Connection con, float percentage) throws SQLException {
+
+        Statement stmt = null;
+        try {
+            stmt = con.createStatement();
+            stmt = con.createStatement(ResultSet.TYPE_SCROLL_SENSITIVE,
+                    ResultSet.CONCUR_UPDATABLE);
+            String sql = "SELECT * FROM " + "COFFEES";
+            ResultSet uprs = stmt.executeQuery(
+                    sql);
+
+            System.out.println(sql);
+
+            while (uprs.next()) {
+                float f = uprs.getFloat("PRICE");
+                uprs.updateFloat( "PRICE", f * percentage);
+                uprs.updateRow();
+            }
+
+        } catch (SQLException e ) {
+            printSQLException(e);
+        } finally {
+            if (stmt != null) { stmt.close(); }
+        }
+    }
+
 
     public static void printSQLException(SQLException ex) {
 
