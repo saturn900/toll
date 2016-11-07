@@ -27,7 +27,9 @@ public class BrokenCounter implements Runnable {
     @Override
     public void run() {
         for (int i = 0; i < 20_000_000; i++) {
+            synchronized (counter) {
                 counter++;
+            }
         }
     }
 
