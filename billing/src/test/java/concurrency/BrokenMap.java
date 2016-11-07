@@ -3,13 +3,14 @@ package concurrency;
 import java.text.DecimalFormat;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.atomic.AtomicInteger;
 
 /**
  * Created by saturn on 07.11.2016.
  */
 public class BrokenMap implements Runnable {
-    private static Map<Integer, String> map = new HashMap<>(4_000_000);
+    private static Map<Integer, String> map = new ConcurrentHashMap<>(4_000_000);
     private static final int limit = 2_000_000;
 
     public static void main (String... args) {
