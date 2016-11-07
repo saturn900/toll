@@ -6,6 +6,7 @@ import java.text.DecimalFormat;
  * Created by saturn on 07.11.2016.
  */
 public class BrokenCounter implements Runnable {
+    private static Object lock = new Object();
     private static Integer counter = 0;
 
     public static void main (String... args) {
@@ -27,7 +28,7 @@ public class BrokenCounter implements Runnable {
     @Override
     public void run() {
         for (int i = 0; i < 20_000_000; i++) {
-            synchronized (counter) {
+            synchronized (lock) {
                 counter++;
             }
         }
