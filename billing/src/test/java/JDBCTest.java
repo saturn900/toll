@@ -14,8 +14,12 @@ public class JDBCTest {
             System.out.println("conn=" + conn);
             viewTable(conn, "");
             System.out.println("==================");
-            modifyPrices(conn, 0.34f);
+            /*modifyPrices(conn, 0.34f);
             System.out.println("==================");
+            */
+
+            batchUpdate(conn);
+
             viewTable(conn, "");
         }
 
@@ -90,6 +94,63 @@ public class JDBCTest {
         }
     }
 
+    public static void batchUpdate(Connection con) throws SQLException {
+
+        Statement stmt = null;
+        try {
+            con.setAutoCommit(false);
+            stmt = con.createStatement();
+
+            stmt.addBatch(
+                    "INSERT INTO COFFEES " +
+                            "VALUES('Amaretto', 49, 9.99, 0, 0)");
+
+            stmt.addBatch(
+                    "INSERT INTO COFFEES " +
+                            "VALUES('Hazelnut', 49, 9.99, 0, 0)");
+
+            stmt.addBatch(
+                    "INSERT INTO COFFEES " +
+                            "VALUES('Amaretto_decaf', 49, " +
+                            "10.99, 0, 0)");
+
+            stmt.addBatch(
+                    "INSERT INTO COFFEES " +
+                            "VALUES('Hazelnut_decaf', 49, " +
+                            "10.99, 0, 0)");
+
+            int [] updateCounts = stmt.executeBatch();
+
+            for (int i = 0; i < updateCounts.length; i++) {
+                int updateCount = updateCounts[i];
+                System.out.println("i=" + i + " " + updateCount);
+            }
+
+            con.commit();
+
+        } catch(BatchUpdateException b) {
+            printBatchUpdateException(b);
+        } catch(SQLException ex) {
+            printSQLException(ex);
+        } finally {
+            if (stmt != null) { stmt.close(); }
+            con.setAutoCommit(true);
+        }
+    }
+
+    public static void printBatchUpdateException(BatchUpdateException b) {
+
+        System.err.println("----BatchUpdateException----");
+        System.err.println("SQLState:  " + b.getSQLState());
+        System.err.println("Message:  " + b.getMessage());
+        System.err.println("Vendor:  " + b.getErrorCode());
+        System.err.print("Update counts:  ");
+        int [] updateCounts = b.getUpdateCounts();
+
+        for (int i = 0; i < updateCounts.length; i++) {
+            System.err.print(updateCounts[i] + "   ");
+        }
+    }
 
     public static void printSQLException(SQLException ex) {
 
