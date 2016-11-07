@@ -9,6 +9,7 @@ import java.util.concurrent.Executors;
 
 /**
  * Created by saturn on 07.11.2016.
+ * Copyright http://stackoverflow.com/questions/22944918/why-does-the-code-hang-with-hashmap-put-from-multiple-threads
  */
 public class HangMap {
 
