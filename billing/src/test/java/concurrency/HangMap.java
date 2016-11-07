@@ -1,5 +1,6 @@
 package concurrency;
 
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Random;
@@ -14,7 +15,7 @@ public class HangMap {
 
     public static void main(String... args) throws Exception {
         final Random rnd = new Random();
-        final Map<String, Object> map = new HashMap<>();
+        final Map<String, Object> map = Collections.synchronizedMap(new HashMap<String, Object>());
         ExecutorService executor = Executors.newFixedThreadPool(20);
         for (int i = 0; i < 200; i++) {
             final int counter = i;
