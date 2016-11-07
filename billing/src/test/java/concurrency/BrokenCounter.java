@@ -1,13 +1,13 @@
 package concurrency;
 
 import java.text.DecimalFormat;
+import java.util.concurrent.atomic.AtomicInteger;
 
 /**
  * Created by saturn on 07.11.2016.
  */
 public class BrokenCounter implements Runnable {
-    private static Object lock = new Object();
-    private static Integer counter = 0;
+    private static AtomicInteger counter = new AtomicInteger(0);
 
     public static void main (String... args) {
         Thread t1 = new Thread(new BrokenCounter());
@@ -21,16 +21,14 @@ public class BrokenCounter implements Runnable {
             System.out.println("interrupt t1,t2 join :" + e.getMessage());
         }
 
-        System.out.println("counter => " + customFormat("### ### ###,###", counter));
+        System.out.println("counter => " + customFormat("### ### ###,###", counter.get()));
 
     }
 
     @Override
     public void run() {
         for (int i = 0; i < 20_000_000; i++) {
-            synchronized (lock) {
-                counter++;
-            }
+                counter.getAndIncrement();
         }
     }
 
