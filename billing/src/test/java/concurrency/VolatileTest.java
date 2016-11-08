@@ -5,7 +5,7 @@ package concurrency;
  */
 public class VolatileTest {
 
-    private static int MY_INT = 0;
+    private static volatile int MY_INT = 0;
 
     public static void main(String[] args) {
         new ChangeListener().start();
