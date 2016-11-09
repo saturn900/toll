@@ -84,7 +84,7 @@ project(':server') {
         providedCompile "org.eclipse.jetty:jetty-webapp:$jettyVersion"
 
 
-        testCompile 'junit:junit:4.11'
+        testCompile "junit:junit:$junitVersion"
         testCompile "org.springframework:spring-test:$springVersion"
 
         runtime group: 'ch.qos.logback', name: 'logback-classic', version: '1.1.7'
@@ -150,6 +150,8 @@ project(':billing') {
 
         compile 'com.h2database:h2:1.4.185'
         compile project(':common')
+
+        testCompile "junit:junit:$junitVersion"
 
     }
 
